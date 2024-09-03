@@ -6,8 +6,12 @@ jobs:
   functions:
     runs-on: ubuntu-latest
     steps:
+      - name: Output Json
+        id: json
+        run: echo "json=[{\"name\":\"user1\"},{\"name\":\"user2\"}]" >> "${GITHUB_OUTPUT}"
+
       - name: Json Function
         run: |
           echo "${USERS}"
         env:
-          USERS: ${{ fromJson("[{\"name\":\"user1\"},{\"name\":\"user2\"}]").*.name }}
+          USERS: ${{ fromJson(steps.json.outputs.json).*.name }}
