@@ -12,6 +12,6 @@ jobs:
 
       - name: Json Function
         run: |
-          for name in "${USERS[@]}"; do echo "${name}"; done
+          echo "${NAMES}"
         env:
-          USERS: ${{ fromJson(steps.json.outputs.json).*.name }}
+          NAMES: ${{ toJson(fromJson(steps.json.outputs.json).*.name) }}
