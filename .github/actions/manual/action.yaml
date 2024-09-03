@@ -14,7 +14,9 @@ runs:
   using: composite
   steps:
     - id: hello
-      run: echo "hello=Hello, ${MESSAGE}" >> "${GITHUB_OUTPUT}"
+      run: echo "hello=Hello, $MESSAGE" >> "${GITHUB_OUTPUT}"
       shell: bash
       env:
         MESSAGE: ${{ inputs.message }}
+    - run: echo {{ steps.hello.outputs.hello }}
+      shell: bash
