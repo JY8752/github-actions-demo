@@ -1,0 +1,13 @@
+name: Function demo
+
+on: workflow_dispatch
+
+jobs:
+  functions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Json Function
+        run: |
+          echo "${USERS}"
+        env:
+          USERS: ${{ fromJson("[{\"name\":\"user1\"},{\"name\":\"user2\"}]").*.name }}
