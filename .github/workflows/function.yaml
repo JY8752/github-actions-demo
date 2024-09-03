@@ -25,4 +25,5 @@ jobs:
       ########################################################
       - run: printenv | grep '_FUNC'
         env:
-          CONTAINS_FUNC: ${{ contains('Hello', 'llo') }}
+          CONTAINS_FUNC: "contains('Hello', 'llo')=${{ contains('Hello', 'llo') }}"
+      - run: echo "${{ contains('Hello', 'He') }}"
