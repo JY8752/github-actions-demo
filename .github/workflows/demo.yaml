@@ -20,11 +20,11 @@ jobs:
         uses: ./.github/actions/manual
         id: hello
         with:
-          message: "$MESSAGE"
+          message: "${MESSAGE}"
         env:
           MESSAGE: ${{ inputs.message }}
 
       - name: Display Hello
-        run: echo "$RESULT"
+        run: echo "${RESULT}"
         env:
           RESULT: ${{ steps.hello.outputs.hello-message }}
