@@ -19,4 +19,4 @@ runs:
         echo "hello=Hello, ${MESSAGE}" >> "${GITHUB_OUTPUT}"
       shell: bash
       env:
-        MESSAGE: ${{ inputs.message }}
+        MESSAGE: "${{ inputs.message }}"
