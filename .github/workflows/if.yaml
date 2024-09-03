@@ -1,0 +1,23 @@
+name: Status check
+
+on: workflow_dispatch
+
+jobs:
+  status_check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Success
+        run: exit 0
+      - name: Echo success
+        if: ${{ success() }}
+        run: echo success!!
+
+      - name: Failure
+        run: exit 1
+      - name: Echo failure
+        if: ${{ failure() }}
+        run: echo failure!!
+
+      - name: Echo always
+        if: ${{ always() }}
+        run: echo always!!

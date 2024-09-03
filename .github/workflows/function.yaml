@@ -21,9 +21,8 @@ jobs:
           NAMES: ${{ toJson(fromJson(steps.json.outputs.json).*.name) }}
 
       ########################################################
-      ##                     json                           ##
+      ##                     func                           ##
       ########################################################
       - run: printenv | grep '_FUNC'
         env:
           CONTAINS_FUNC: "contains('Hello', 'llo')=${{ contains('Hello', 'llo') }}"
-      - run: echo "${{ contains('Hello', 'He') }}"
