@@ -13,11 +13,18 @@ jobs:
   demo:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: ./.github/actions/manual
+      - name: Setup
+        uses: actions/checkout@v4
+
+      - name: Hello
+        uses: ./.github/actions/manual
         id: hello
         with:
           message: "$MESSAGE"
         env:
           MESSAGE: ${{ inputs.message }}
-      - run: echo ${{ steps.hello.outputs.hello-message }}
+
+      - name: Display Hello
+        run: echo "$RESULT"
+        env:
+          RESULT: ${{ steps.hello.outputs.hello-message }}

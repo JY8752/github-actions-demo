@@ -4,7 +4,7 @@ description: |
 inputs:
   message:
     default: "World!!"
-    reuired: false
+    required: false
     description: 指定の文字を加工して返します。
 outputs:
   hello-message:
@@ -13,7 +13,7 @@ outputs:
 runs:
   using: composite
   steps:
-    - run: echo "hello=Hello, $MESSAGE" >> "${GITHUB_OUTPUT}"
+    - run: echo "hello=Hello, ${MESSAGE}" >> "${GITHUB_OUTPUT}"
       shell: bash
       env:
         MESSAGE: ${{ inputs.message }}
