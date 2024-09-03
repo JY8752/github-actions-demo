@@ -20,7 +20,7 @@ jobs:
         uses: ./.github/actions/manual
         id: hello
         with:
-          message: "${MESSAGE}"
+          message: "$MESSAGE"
         env:
           MESSAGE: ${{ inputs.message }}
 
