@@ -25,6 +25,6 @@ jobs:
           MESSAGE: ${{ inputs.message }}
 
       - name: Display Hello
-        run: echo "${RESULT}"
+        run: echo "$RESULT"
         env:
           RESULT: ${{ steps.hello.outputs.hello-message }}
