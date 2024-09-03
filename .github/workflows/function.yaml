@@ -6,6 +6,10 @@ jobs:
   functions:
     runs-on: ubuntu-latest
     steps:
+      ########################################################
+      ##                     json                           ##
+      ########################################################
+
       - name: Output Json
         id: json
         run: echo "json=[{\"name\":\"user1\"},{\"name\":\"user2\"}]" >> "${GITHUB_OUTPUT}"
@@ -15,3 +19,10 @@ jobs:
           echo "${NAMES}"
         env:
           NAMES: ${{ toJson(fromJson(steps.json.outputs.json).*.name) }}
+
+      ########################################################
+      ##                     json                           ##
+      ########################################################
+      - run: printenv | grep '_FUNC'
+        env:
+          CONTAINS_FUNC: ${{ contains('Hello', 'llo') }}
