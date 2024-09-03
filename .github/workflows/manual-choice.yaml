@@ -1,0 +1,22 @@
+name: Manual workflow by choice input type
+
+on:
+  workflow_dispatch:
+    inputs:
+      message:
+        type: choice
+        options:
+          - GitHub!!
+          - GitHub Actions!!
+          - World!!
+        default: World!!
+        description: 出力するメッセージを選択
+
+jobs:
+  choice:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output Message
+        run: echo "Hello, $INPUT"
+        env:
+          INPUT: ${{ inputs.message }}
