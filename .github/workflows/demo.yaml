@@ -1,0 +1,23 @@
+name: Demo
+
+on:
+  workflow_dispatch:
+    inputs:
+      message:
+        type: string
+        default: World!!
+        required: false
+        description: Helloで返す文字列を入力
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/manual
+        id: hello
+        with:
+          message: "$MESSAGE"
+        env:
+          MESSAGE: ${{ inputs.message }}
+      - run: echo ${{ steps.hello.outputs.hello-message }}

@@ -1,0 +1,19 @@
+name: Manual Work Flow
+description: |
+  手動実行で指定された文字列を加工して返します
+inputs:
+  message:
+    default: "World!!"
+    reuired: false
+    description: 指定の文字を加工して返します。
+outputs:
+  hello-message:
+    value: ${{ steps.current.outputs.hello }}
+    description: 加工した文字列
+runs:
+  using: composite
+  steps:
+    - run: echo "hello=Hello, $MESSAGE" >> "${GITHUB_OUTPUT}"
+      shell: bash
+      env:
+        MESSAGE: ${{ inputs.message }}
