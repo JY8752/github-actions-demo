@@ -14,4 +14,4 @@ jobs:
         run: |
           echo "${USERS}"
         env:
-          USERS: ${{ fromJson(steps.json.outputs.json) }}
+          USERS: ${{ steps.json.outputs.json }}
