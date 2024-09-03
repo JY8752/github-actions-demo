@@ -20,9 +20,7 @@ jobs:
         uses: ./.github/actions/manual
         id: hello
         with:
-          message: "$MESSAGE"
-        env:
-          MESSAGE: ${{ inputs.message }}
+          message: ${{ inputs.message }}
 
       - name: Display Hello
         run: echo "$RESULT"

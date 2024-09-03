@@ -8,15 +8,14 @@ inputs:
     description: 指定の文字を加工して返します。
 outputs:
   hello-message:
-    value: "${{ steps.hello.outputs.hello }}"
+    value: ${{ steps.hello.outputs.hello }}
     description: 加工した文字列
 runs:
   using: composite
   steps:
     - id: hello
       run: |
-        set -x
-        echo "hello=Hello, ${MESSAGE}" >> "${GITHUB_OUTPUT}"
+        echo "hello=Hello, $MESSAGE" >> "${GITHUB_OUTPUT}"
       shell: bash
       env:
-        MESSAGE: "${{ inputs.message }}"
+        MESSAGE: ${{ inputs.message }}
